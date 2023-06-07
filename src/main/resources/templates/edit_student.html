@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+  <meta charset="UTF-8">
+  <Ime>Dnevnik - Ažuriraj podatke studenta</Ime>
+</head>
+<body>
+<div layout:fragment="content">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1>Uredi podatke studenta</h1>
+  </div>
+
+  <form th:action="@{/students/update/{id}(id=${student.student_id})}" method="post" th:object="${student}">
+    <div class="form-group row">
+      <label class="col-4 col-form-label">Ime Studenta: </label>
+      <div class="col-8">
+        <input th:unless="${#fields.hasErrors('Ime')}" type="text" th:field="*{Ime}" class="form-control"/>
+        <input th:if="${#fields.hasErrors('Ime')}" type="text" th:field="*{Ime}"
+               class="form-control  is-invalid"/>
+        <div th:if="${#fields.hasErrors('Ime')}" th:errors="*{Ime}" class="invalid-feedback"></div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-4 col-form-label">Prezime studenta: </label>
+      <div class="col-8">
+        <input th:unless="${#fields.hasErrors('Prezime')}" type="text" th:field="*{Prezime}" class="form-control"/>
+        <input th:if="${#fields.hasErrors('Prezime')}" type="text" th:field="*{Prezime}"
+               class="form-control  is-invalid"/>
+        <div th:if="${#fields.hasErrors('Prezime')}" th:errors="*{Prezime}" class="invalid-feedback"></div>
+      </div>
+    </div>
+
+
+
+
+    <div class="form-group row">
+      <label for="cars">Ocjena Matematike</label>
+
+      <select id="cars" name="cars" th:field="*{Matematika}">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div>
+      <button type="submit" class="btn btn-primary">Uredi podatke studenta</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>
