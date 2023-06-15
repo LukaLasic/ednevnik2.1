@@ -1,6 +1,7 @@
 package net.fgrprojekt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
@@ -10,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Collections;
 
 public class CustomAuthenticationFailureHandler
         implements AuthenticationFailureHandler {
@@ -28,3 +30,7 @@ public class CustomAuthenticationFailureHandler
     }
 
 }
+
+
+
+

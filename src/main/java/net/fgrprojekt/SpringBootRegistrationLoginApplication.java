@@ -12,7 +12,7 @@ public class SpringBootRegistrationLoginApplication {
 	@GetMapping("/message")
 	public String getMessage(){
 
-		return "Dobrodošli u eDnevnik, bla";
+		return "Dobrodošli u eDnevnik";
 	}
 
 	public static void main(String[] args) {
