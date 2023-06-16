@@ -22,8 +22,8 @@ public class DataSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) {
         // Seed your data here
-        Role userRole = createRoleIfNotFound("USER");
-        Role adminRole = createRoleIfNotFound("ADMIN");
+        Role userRole = createRoleIfNotFound("User");
+        Role adminRole = createRoleIfNotFound("Admin");
 
         User adminUser = new User("admin@example.com", passwordEncoder.encode("admin"), "Admin", "User");
         adminUser.addRole(adminRole);
