@@ -31,6 +31,7 @@ public class AdminDataSeeder implements CommandLineRunner {
 
             User admin = new User();
             admin.setFirstName("Admin");
+            admin.setEmail("lukalasic@gmail.com");
             admin.setPassword(passwordEncoder.encode("adminpassword"));
             admin.setRoles(Collections.singleton(adminRole));
 
