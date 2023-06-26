@@ -36,16 +36,13 @@ public class User {
 
 	// Constructors, getters, and setters
 
-	public User() {
-		this.role = "User";
-	}
 
 	public User(String firstName, String lastName, String email, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
 		this.password = password;
-		this.role = "Admin";
+		this.role = "User";
 	}
 
 	// Getters and Setters
