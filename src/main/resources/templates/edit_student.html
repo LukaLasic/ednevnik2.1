@@ -14,7 +14,7 @@
     <div class="form-group row">
       <label class="col-4 col-form-label">Ime Studenta: </label>
       <div class="col-8">
-        <input th:unless="${#fields.hasErrors('Ime')}" type="text" th:field="*{Ime}" class="form-control"/>
+        <input th:unless="${#fields.hasErrors('Ime')}" type="ime" th:field="*{Ime}" class="form-control"/>
         <input th:if="${#fields.hasErrors('Ime')}" type="text" th:field="*{Ime}"
                class="form-control  is-invalid"/>
         <div th:if="${#fields.hasErrors('Ime')}" th:errors="*{Ime}" class="invalid-feedback"></div>
