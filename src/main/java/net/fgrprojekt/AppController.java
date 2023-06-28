@@ -83,6 +83,9 @@ public class AppController {
 
 	@GetMapping("/students")
 	public String liststudents (Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+		model.addAttribute("userDetails", userDetails);
 		List<Student> liststudents = studentRepo.findAll();
 		model.addAttribute("liststudents", liststudents);
 		model.addAttribute("activeLink", "Knjige");
@@ -91,43 +94,50 @@ public class AppController {
 
 	@GetMapping("students/add")
 	public String showAddstudentForm (Model model) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		model.addAttribute("activeLink", "Studenti");
+		model.addAttribute("userDetails", userDetails);
 		model.addAttribute("student", new Student());
 		return "add_student";
 	}
 
 	@PostMapping("students/add")
-	public String addStudent(@Valid Student student, BindingResult result, Model model) {
+	public String addstudent (@Valid Student student, BindingResult result, Model model) {
 		boolean errors = result.hasErrors();
 		if (errors) {
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			model.addAttribute("activeLink", "Studenti");
+			model.addAttribute("userDetails", userDetails);
 			model.addAttribute("student", student);
 			return "add_student";
 		}
-
-		// Rest of your code for adding the student
-
-		return "redirect:/students"; // Redirect to the desired page after successfully adding the student
+		studentRepo.save(student);
+		return "redirect:/students";
 	}
-
 
 	@GetMapping("students/edit/{id}")
 	public String showUpdateForm(@PathVariable("id") long id, Model model) {
 		Student student = studentRepo.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 		model.addAttribute("activeLink", "Student");
+		model.addAttribute("userDetails", userDetails);
 		model.addAttribute("student", student);
 		return "edit_student";
 	}
-
 
 	@PostMapping("students/update/{student_id}")
 	public String updateUser(@PathVariable("student_id") long id, @Valid Student student,
 							 BindingResult result, Model model) {
 		if (result.hasErrors()) {
-
+			student.setStudent_id(id);
+			Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+			UserDetails userDetails = (UserDetails) authentication.getPrincipal();
 			model.addAttribute("activeLink", "Studenti");
-
+			model.addAttribute("userDetails", userDetails);
 			model.addAttribute("student", student);
 			return "edit_student";
 		}
