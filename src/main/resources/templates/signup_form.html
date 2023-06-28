@@ -75,10 +75,10 @@
 <div class="conteiner">
     <div class="reg"><h1>Registracija</h1></div>
     <div class="form-block w-form">
-        <form id="wf-form-" name="wf-form-" data-name="" th:action="@{/login}" th:object="${user}" method="post" class="form">
-            <label for="name">Ime</label><input
+        <form id="wf-form-" name="wf-form-" data-name="" th:action="@{/process_register}" th:object="${user}"
+              method="post" class="form"><label for="name">Ime</label><input
                 type="text" th:field="*{firstName}" class="w-input" maxlength="256" name="name" data-name="Name" placeholder=""
-                id="name"/><label for="surname">Prezime</label><input type="lastName" th:field="*{lastName}" class="w-input" maxlength="256"
+                id="name"/><label for="surname">Prezime</label><input type="text" th:field="*{lastName}" class="w-input" maxlength="256"
                                                                       name="surname" data-name="surname" placeholder=""
                                                                       id="surname"/><label
                 for="email">E-mail </label><input type="email" th:field="*{email}" class="w-input" maxlength="256" name="email"

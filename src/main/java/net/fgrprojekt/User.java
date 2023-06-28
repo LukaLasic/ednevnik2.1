@@ -20,32 +20,40 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-	 Long id;
-	@Column(name = "firstName", nullable = false, length = 20)
-	 String firstName;
-	@Column(name = "lastName", nullable = false, length = 20)
-	 String lastName;
-	@Column(name = "email",nullable = false, unique = true, length = 45)
-	 String email;
-	@Column(name = "password",nullable = false, length = 64)
+	@Column(nullable = false, unique = true, length = 45)
+	private String email;
 
-	 String password;
-	@Column(name = "role",nullable = false)
-	 String role;
+	@Column(nullable = false, length = 64)
+	private String password;
 
-	// Constructors, getters, and setters
+	@Column(name = "first_name", nullable = false, length = 20)
+	private String firstName;
+
+	@Column(name = "last_name", nullable = false, length = 20)
+	private String lastName;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "users_roles",
+			joinColumns = @JoinColumn(name = "user_id"),
+			inverseJoinColumns = @JoinColumn(name = "role_id")
+	)
+	private Set<Role> roles = new HashSet<>();
+
+	public User(String email, String password, String firstName, String lastName) {
+		this.email=email;
+		this.password=password;
+		this.firstName=firstName;
+		this.lastName=lastName;
 
 
-	public User(String firstName, String lastName, String email, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.role = "User";
 	}
 
-	// Getters and Setters
+	public User() {
+
+	}
 
 	public Long getId() {
 		return id;
@@ -53,22 +61,6 @@ public class User {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
 	}
 
 	public String getEmail() {
@@ -87,11 +79,33 @@ public class User {
 		this.password = password;
 	}
 
-	public String getRole() {
-		return role;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+	public void addRole(Role role) {
+		this.roles.add(role);
+	}
+
+
 }
