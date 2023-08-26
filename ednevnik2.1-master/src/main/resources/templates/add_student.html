@@ -55,6 +55,15 @@
         <div th:if="${#fields.hasErrors('Matematika')}" th:errors="*{matematika}" class="invalid-feedback"></div>
       </div>
     </div>
+  <div class="form-group row">
+      <label class="col-4 col-form-label">Ocjena Hrvatski jezik </label>
+      <div class="col-8">
+        <input th:unless="${#fields.hasErrors('hrvatski_jezik')}" type="number" th:field="*{hrvatski_jezik}" class="form-control"/>
+        <input th:if="${#fields.hasErrors('hrvatski_jezik')}" type="number" th:field="*{hrvatski_jezik}"
+               class="form-control  is-invalid"/>
+        <div th:if="${#fields.hasErrors('hrvatski_jezik')}" th:errors="*{hrvatski_jezik}" class="invalid-feedback"></div>
+      </div>
+    </div>
 
 =======
 >>>>>>> 1f3d8cb (Initial commit)
