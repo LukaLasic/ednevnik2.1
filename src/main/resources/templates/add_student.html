@@ -37,10 +37,19 @@
     <div class="form-group row">
       <label class="col-4 col-form-label">Ocjena Matematike </label>
       <div class="col-8">
-        <input th:unless="${#fields.hasErrors('Matematika')}" type="number" th:field="*{Matematika}" class="form-control"/>
-        <input th:if="${#fields.hasErrors('Matematika')}" type="number" th:field="*{Matematika}"
+        <input th:unless="${#fields.hasErrors('Matematika')}" type="number" th:field="*{matematika}" class="form-control"/>
+        <input th:if="${#fields.hasErrors('Matematika')}" type="number" th:field="*{matematika}"
                class="form-control  is-invalid"/>
-        <div th:if="${#fields.hasErrors('Matematika')}" th:errors="*{Matematika}" class="invalid-feedback"></div>
+        <div th:if="${#fields.hasErrors('Matematika')}" th:errors="*{matematika}" class="invalid-feedback"></div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label class="col-4 col-form-label">Ocjena Hrvatski jezik </label>
+      <div class="col-8">
+        <input th:unless="${#fields.hasErrors('Matematika')}" type="number" th:field="*{hrvatski_jezik}" class="form-control"/>
+        <input th:if="${#fields.hasErrors('Matematika')}" type="number" th:field="*{hrvatski_jezik}"
+               class="form-control  is-invalid"/>
+        <div th:if="${#fields.hasErrors('Matematika')}" th:errors="*{hrvatski_jezik}" class="invalid-feedback"></div>
       </div>
     </div>
 
