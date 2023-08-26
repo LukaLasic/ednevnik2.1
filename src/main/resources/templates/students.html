@@ -167,6 +167,7 @@
     </form>
   </div>
 </div>
+<div>
 <table class="table-fill">
   <thead>
   <tr>
@@ -184,12 +185,12 @@
   </thead>
   <tbody class="table-hover">
   <tr th:each="student: ${liststudents}">
-    <td class="text-left" th:text="${student.Ime}">January</td>
-    <td class="text-left" th:text="${student.Prezime}">$ 50,000.00</td>
-    <td class="text-left" th:text="${student.Matematika}">$ 50,000.00</td>
-    <td class="text-left" th:text="${student.Hrvatski_jezik}">$ 50,000.00</td>
-    <td class="text-left" th:text="${student.Engleski_jezik}">$ 50,000.00</td>
-    <td class="text-left" th:text="${student.Fizika}">$ 50,000.00</td>
+    <td class="text-left" th:text="${student.ime}">Ime2</td>
+    <td class="text-left" th:text="${student.prezime}">Prezima</td>
+    <td class="text-left" th:text="${student.matematika}">Matematika</td>
+    <td class="text-left" th:text="${student.hrvatski_jezik}">Hrvatski jezik</td>
+    <td class="text-left" th:text="${student.engleski_jezik}">Engleski jezik</td>
+    <td class="text-left" th:text="${student.fizika}">Fizika</td>
     <td class="text-left" th:if="${#strings.contains(#authentication.principal.authorities,'Admin') or #strings.contains(#authentication.principal.authorities,'Professor')}"><a style="color:blue;" th:href="@{/students/edit/{id}(id=${student.student_id})}">&#9998;</a></td>
     <td class="text-left" th:if="${#strings.contains(#authentication.principal.authorities,'Admin')}"><a style="color: red;" th:href="@{/student/delete/{id}(id=${student.student_id})}">&times;</a></td>
 
@@ -197,6 +198,7 @@
 
   </tbody>
 </table>
+</div>
 
 
 </body>
